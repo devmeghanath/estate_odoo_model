@@ -11,8 +11,9 @@
             <field name="name">porperty_tag_view_tree</field>
             <field name="model">property.tag</field>
             <field name="arch" type="xml">
-                <tree string="porperty_tag_tree">
+                <tree string="porperty_tag_tree" editable="bottom">
                     <field name="name"/>
+                     <field name="color" widget="color_picker" />
                 </tree>
             </field>
         </record>
@@ -24,6 +25,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+                            <field name="color" widget="color_picker" />
 
                         </group>
                     </sheet>
