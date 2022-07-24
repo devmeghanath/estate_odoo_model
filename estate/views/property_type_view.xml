@@ -5,14 +5,14 @@
             <field name="name">Property Type</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">property.type</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">Kanban,tree,form</field>
         </record>
 
         <record id="property_type_view_tree" model="ir.ui.view">
             <field name="name">property_type_view_tree</field>
             <field name="model">property.type</field>
             <field name="arch" type="xml">
-                <tree string="property_type_tree" >
+                <tree string="property_type_tree">
                     <field name="sequence" widget="handle"/>
                     <field name="name"/>
                 </tree>
@@ -25,18 +25,18 @@
                 <form string="property_type_form">
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                        <button name="offer_action" type="object" class="oe_stat_button" icon="fa-globe icon">
-                             <field name="offer_count" widget="statinfo" string="Offers"/>
-                        </button>
-                    </div>
+                            <button name="offer_action" type="object" class="oe_stat_button" icon="fa-globe icon">
+                                <field name="offer_count" widget="statinfo" string="Offers"/>
+                            </button>
+                        </div>
 
                         <div>
-                           <div class="oe_title">
-                               <label for="name" class="oe_edit_only"/>
-                               <h1>
-                                   <field name="name" placeholder="......"/>
-                               </h1>
-                           </div>
+                            <div class="oe_title">
+                                <label for="name" class="oe_edit_only"/>
+                                <h1>
+                                    <field name="name" placeholder="......"/>
+                                </h1>
+                            </div>
                         </div>
                         <group>
                             <field name="hide_name"/>
@@ -48,7 +48,8 @@
                                     <group>
                                         <field name="property_ids">
                                             <tree>
-                                                <field name="name" attrs="{'column_invisible':[('parent.hide_name','=',True)]}"/>
+                                                <field name="name"
+                                                       attrs="{'column_invisible':[('parent.hide_name','=',True)]}"/>
                                                 <field name="expected_price"/>
                                                 <field name="state"/>
                                             </tree>
@@ -68,6 +69,23 @@
                 </form>
             </field>
         </record>
-
+        <record id="property_kanban_view" model="ir.ui.view">
+            <field name="name">property_kanban_view</field>
+            <field name="model">property.type</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <field name="name"/>
+                            </div>
+                            <div t-if="property_ids.states == 'new'">
+                                    This is new!
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
     </data>
 </odoo>
