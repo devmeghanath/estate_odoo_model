@@ -5,7 +5,7 @@
             <field name="name">Property Type</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">property.type</field>
-            <field name="view_mode">Kanban,tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
         </record>
 
         <record id="property_type_view_tree" model="ir.ui.view">
@@ -78,9 +78,6 @@
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click">
                                 <field name="name"/>
-                            </div>
-                            <div t-if="property_ids.states == 'new'">
-                                    This is new!
                             </div>
                         </t>
                     </templates>
